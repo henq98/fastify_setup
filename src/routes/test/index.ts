@@ -4,7 +4,11 @@ import testRoute from 'fastify-plugin'
 import testRouteSchema from './schema'
 
 export default testRoute(
-  (server: FastifyInstance, options: {}, next: testRoute.nextCallback) => {
+  (
+    server: FastifyInstance,
+    options: testRoute.PluginOptions,
+    next: testRoute.nextCallback
+  ) => {
     server.get('/test', testRouteSchema, (request, reply) => {
       const { num } = request.query
 
