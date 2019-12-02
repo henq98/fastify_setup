@@ -1,0 +1,22 @@
+service: fastify
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: sa-east-1
+  stage: dev
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+
+functions:
+  fastify:
+    handler: src/lambda.handler
+    events:
+      # - http:
+      #     path: /{any+}
+      #     method: any
+        - http:
+            path: test
+            method: get
